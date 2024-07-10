@@ -47,11 +47,12 @@ metadata:
   name: ingress-wildcard-host
   annotations:
     alb.ingress.kubernetes.io/scheme: internet-facing
-    kubernetes.io/ingress.class: alb
+    # kubernetes.io/ingress.class: alb
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/tags: Environment=dev,Team=test
     alb.ingress.kubernetes.io/group.name: pudviks
 spec:
+  ingressClassName: alb
   rules:
   - host: "app1.daws78s.site"
     http:
