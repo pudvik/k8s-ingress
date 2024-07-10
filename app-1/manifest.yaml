@@ -38,6 +38,27 @@ spec:
   - protocol: TCP
     port: 80 #service-port
     targetPort: 80 #target-port
+
+---
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-wildcard-host
+spec:
+  rules:
+  - host: "app1.daws78s.site"
+    http:
+      paths:
+      - pathType: Prefix
+        path: ""
+        backend:
+          service:
+            name: app-1
+            port:
+              number: 80
+  
+
     
 
     
