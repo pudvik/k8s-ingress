@@ -1,0 +1,48 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: app-1
+  labels:
+    name: app-1
+    purpose: ingress
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: app-1
+      purpose: ingress
+
+  template:
+    metadata:
+
+      labels:
+        name: app-1
+        purpose: ingress
+      
+    spec:
+      containers:
+      - name: nginx
+        image: pudviks/nginx:1.0
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-1
+spec:
+  selector:
+    name: app-1
+    purpose: ingress
+  ports:
+  - protocol: TCP
+    port: 80 #service-port
+    targetPort: 80 #target-port
+    
+
+    
+
+
+
+
+
